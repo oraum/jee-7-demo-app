@@ -1,0 +1,11 @@
+.idea
+*.iml
+.project
+.classpath
+.checkstyle
+.factorypath
+.settings
+.metadata
+.apt_generated
+target
+wasliberty/*.war
