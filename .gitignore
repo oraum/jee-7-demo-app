@@ -9,3 +9,4 @@
 .apt_generated
 target
 wasliberty/*.war
+wasliberty/*.ear
