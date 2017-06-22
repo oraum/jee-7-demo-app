@@ -32,7 +32,6 @@
                     <version>3.1.0</version>
                     <configuration>
                         <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                        <warName>${project.contextRoot}</warName>
                         <archive>
                             <addMavenDescriptor>false</addMavenDescriptor>
                         </archive>
@@ -54,7 +53,7 @@
                         <modules>
                             <webModule>
                                 <groupId>${project.parent.groupId}</groupId>
-                                <artifactId>jee7demo-webapp</artifactId>
+                                <artifactId>webapp</artifactId>
                                 <bundleFileName>jee7demo.war</bundleFileName>
                                 <contextRoot>/${project.contextRoot}</contextRoot>
                                 <bundleDir>/</bundleDir>
