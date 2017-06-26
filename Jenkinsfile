@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building ...'
-                withMaven {
+                withMaven(maven: 'Maven 3.5.0') {
                     sh 'mvn -B -V clean compile'
                 }
             }
