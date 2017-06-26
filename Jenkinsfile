@@ -1,4 +1,3 @@
-# Build pipeline configuration
 pipeline {
     agent any
 
