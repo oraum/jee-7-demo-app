@@ -18,7 +18,21 @@
         <project.contextRoot>jee7demo</project.contextRoot>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>internal</id>
+            <name>internal release repo</name>
+            <url>http://localhost:18081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <name>internal snapshot repo</name>
+            <url>http://localhost:18081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <build>
+        <finalName>${project.contextRoot}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -32,7 +46,6 @@
                     <version>3.1.0</version>
                     <configuration>
                         <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                        <warName>${project.contextRoot}</warName>
                         <archive>
                             <addMavenDescriptor>false</addMavenDescriptor>
                         </archive>
