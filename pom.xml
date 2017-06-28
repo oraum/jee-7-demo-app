@@ -22,12 +22,12 @@
         <repository>
             <id>internal</id>
             <name>internal release repo</name>
-            <url>http://localhost:18081/repository/maven-releases/</url>
+            <url>http://localhost:18443/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>snapshot</id>
             <name>internal snapshot repo</name>
-            <url>http://localhost:18081/repository/maven-snapshots/</url>
+            <url>http://localhost:18443/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
