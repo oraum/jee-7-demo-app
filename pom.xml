@@ -25,9 +25,9 @@
             <url>http://nexus:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>maven-release-internal</id>
+            <id>maven-snapshot-internal</id>
             <name>internal snapshot repo</name>
-            <url>http://localhost:8081/repository/maven-snapshots/</url>
+            <url>http://nexus:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
