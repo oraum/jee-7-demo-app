@@ -18,18 +18,18 @@
         <project.contextRoot>jee7demo</project.contextRoot>
     </properties>
 
-    <!--distributionManagement>
+    <distributionManagement>
         <repository>
-            <id>internal</id>
+            <id>maven-release-internal</id>
             <name>internal release repo</name>
-            <url>https://localhost:18443/repository/maven-releases/</url>
+            <url>http://nexus:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>snapshot</id>
+            <id>maven-release-internal</id>
             <name>internal snapshot repo</name>
-            <url>https://localhost:18443/repository/maven-snapshots/</url>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement -->
+    </distributionManagement>
 
     <build>
         <finalName>${project.contextRoot}</finalName>
