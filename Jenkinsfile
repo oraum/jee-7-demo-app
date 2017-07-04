@@ -21,7 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing ...'
-                withMaven(maven: 'Maven 3.5.0') {
+                withMaven(globalMavenSettingsConfig: 'mavenGlobalSettings', maven: 'Maven 3.5.0') {
                     sh 'mvn -B verify'
                 }
             }
