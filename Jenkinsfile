@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out ...'
-                git branch: 'wasline', url: 'http://gitlab/root/jee-7-demo-app'
+                git branch: 'wasline', url: 'http://gitlab/root/jee-7-demo-app.git'
             }
         }
 
