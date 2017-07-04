@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.example</groupId>
+  <artifactId>jee7demo-docker-image</artifactId>
+  <name>jee7demo-docker-image</name>
+  <packaging>pom</packaging>
+  
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>jee7demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  
+  <!-- Ideally the Dockerfile itself should be the single point of build configs -->
+  <!-- In order to reduce Dockerfile's dependency to Maven's pom.xml -->
+  <!-- In the Dockerfile, we should use properties as little as possible -->
+  <!-- Ask other modules to copy their built binaries to docker's folder-->
+  <!-- properties>
+    <file>welcome.txt</file>
+    <base>jetty</base>
+  </properties -->
+  
+  
+  <dependencies>
+    <dependency>
+      <groupId>${project.parent.groupId}</groupId>
+      <artifactId>jee7demo-ear</artifactId>
+      <version>${project.version}</version>
+      <type>ear</type>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <!-- pluginManagement -->
+    <plugins>
+      <!-- plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>0.21.0</version>
+        <configuration>
+          <images>
+            <image>
+              <name>buba:jee7demo</name>
+              <alias>dockerfile</alias>
+              <build>
+                <filter>@</filter>
+                <dockerFileDir>${project.basedir}</dockerFileDir>
+              </build>
+              <run>
+                <ports>
+                  <port>9080:9080</port>
+                </ports>
+              </run>
+            </image>
+          </images>
+        </configuration>
+      </plugin -->
+      
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>1.3.1</version>
+        <executions>
+          <execution>
+            <id>default</id>
+            <goals>
+              <goal>build</goal>
+              <goal>push</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <repository>buba/jee7demo</repository>
+          <tag>${project.version}</tag>
+        </configuration>
+      </plugin>
+    
+    </plugins>
+    <!-- /pluginManagement -->
+  </build>
+
+</project>

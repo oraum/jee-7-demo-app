@@ -10,3 +10,4 @@
 target
 wasliberty/*.war
 wasliberty/*.ear
+/docker/*.ear

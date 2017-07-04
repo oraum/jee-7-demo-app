@@ -10,15 +10,30 @@
     <modules>
         <module>webapp</module>
         <module>ear</module>
+        <module>docker</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.contextRoot>jee7demo</project.contextRoot>
+        <main.basedir>${project.basedir}</main.basedir>
     </properties>
+    
+    <dependencyManagement>
+        <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.fabric8/docker-maven-plugin -->
+        <!-- dependency>
+            <groupId>com.example</groupId>
+            <artifactId>jee7demo-docker-image</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency -->
 
-    <distributionManagement>
+        </dependencies>
+    </dependencyManagement>
+    
+
+    <!-- distributionManagement>
         <repository>
             <id>maven-release-internal</id>
             <name>internal release repo</name>
@@ -29,67 +44,6 @@
             <name>internal snapshot repo</name>
             <url>http://nexus:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>
-
-    <build>
-        <finalName>${project.contextRoot}</finalName>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.3</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <configuration>
-                        <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                        <archive>
-                            <addMavenDescriptor>false</addMavenDescriptor>
-                        </archive>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-ear-plugin</artifactId>
-                    <version>2.10.1</version>
-                    <configuration>
-                        <version>6</version>
-                        <defaultLibBundleDir>lib</defaultLibBundleDir>
-                        <skinnyWars>false</skinnyWars> <!-- nicht genutzt, wirkt sich nur auf transitive Abhaengigkeiten im WEB
-							aus -->
-                        <generateModuleId>true</generateModuleId>
-                        <generateApplicationXml>true</generateApplicationXml>
-                        <packagingExcludes>META-INF/ibmconfig/**</packagingExcludes>
-                        <modules>
-                            <webModule>
-                                <groupId>${project.parent.groupId}</groupId>
-                                <artifactId>jee7demo-webapp</artifactId>
-                                <bundleFileName>jee7demo.war</bundleFileName>
-                                <contextRoot>/${project.contextRoot}</contextRoot>
-                                <bundleDir>/</bundleDir>
-                            </webModule>
-                        </modules>
-                        <archive>
-                            <addMavenDescriptor>false</addMavenDescriptor>
-                            <manifest>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                            </manifest>
-                            <manifestEntries>
-                                <Implementation-SCM-Revision-Number>${buildNumber}</Implementation-SCM-Revision-Number>
-                                <Build-Date>${build.time}</Build-Date>
-                                <Implementation-Timestamp>${timestamp}</Implementation-Timestamp>
-                                <Java-Version>${java.version}</Java-Version>
-                                <Java-Vendor>${java.vendor}</Java-Vendor>
-                            </manifestEntries>
-                        </archive>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+    </distributionManagement -->
+    
 </project>

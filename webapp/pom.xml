@@ -1,7 +1,6 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>jee7demo-webapp</artifactId>
     <packaging>war</packaging>
 
@@ -58,6 +57,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    
     <build>
         <finalName>jee7demo</finalName>
         <plugins>
@@ -97,6 +98,22 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+    
+    
+          
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+                    <!-- warName>${project.contextRoot}</warName -->
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+            
         </plugins>
         <testResources>
             <testResource>
@@ -104,6 +121,9 @@
             </testResource>
         </testResources>
     </build>
+    
+    
+    
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

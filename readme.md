@@ -1,9 +1,9 @@
 ## Run the Application
 
 1. Install Docker CLI on your machine
-1. `cd ./wasliberty`
-1. `docker build .`
-1. `docker run jeedemoliberty`
+1. start the Docker daemon
+1. mvn package
+1. docker container run 
 1. goto [http://localhost:9080/jee7demo/](http://localhost:9080/jee7demo/)
 
 
