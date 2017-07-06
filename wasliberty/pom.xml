@@ -73,7 +73,7 @@
           </execution>
         </executions>
         <configuration>
-          <repository>buba/jee7demo</repository>
+          <repository>jee7demo</repository>
           <tag>${project.version}</tag>
         </configuration>
       </plugin>
