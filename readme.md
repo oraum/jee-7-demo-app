@@ -29,7 +29,7 @@
     - Build Settings
         - Email notification: oliver.raum@bundesbank.de, 
         ning.zhao@externe-mitarbeiter.bundesbank.de, 
-        stefen.elste@bundesbank.de
+        steffen.elste@bundesbank.de
     - Post Build Actions --> Deploy artifacts to Maven Repository
         - Repo URL: [http://nexus:8081/repository/maven-snapshots/](http://nexus:8081/repository/maven-snapshots/)
         - Repo ID: `maven-snapshot-internal`
