@@ -18,20 +18,8 @@
         <project.contextRoot>jee7demo</project.contextRoot>
         <main.basedir>${project.basedir}</main.basedir>
     </properties>
-    
-    <dependencyManagement>
-        <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.fabric8/docker-maven-plugin -->
-        <!-- dependency>
-            <groupId>com.example</groupId>
-            <artifactId>jee7demo-docker-image</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency -->
-        </dependencies>
-    </dependencyManagement>
-    
 
-    <!-- distributionManagement>
+    <distributionManagement>
         <repository>
             <id>maven-release-internal</id>
             <name>internal release repo</name>
@@ -42,6 +30,5 @@
             <name>internal snapshot repo</name>
             <url>http://nexus:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement -->
-    
+    </distributionManagement>
 </project>
