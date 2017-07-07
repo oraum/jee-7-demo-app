@@ -1,5 +1,5 @@
 node {
-
+    // Variable for the Docker image to build
     def image
 
     stage('Checkout') {
@@ -46,6 +46,14 @@ node {
             sh "docker push localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
 
             sh 'docker logout https://localhost:18500/'
+        }
+    }
+
+    stage('Deploy') {
+        echo 'Uploading Maven artifact(s) ...'
+
+        withMaven(globalMavenSettingsConfig: 'mavenGlobalSettings', maven: 'Maven 3.5.0') {
+            sh "mvn -B deploy"
         }
     }
 }
