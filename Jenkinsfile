@@ -35,7 +35,7 @@ node {
 
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
             // Workaround - see issue https://issues.jenkins-ci.org/browse/JENKINS-38018
-            sh "docker login -u $env.USER -p $env.PASSWORD http://localhost:18500/"
+            sh "docker login -u $env.USER -p $env.PASSWORD https://localhost:18500/"
 
             // Tagging images
             sh "docker tag ${image.imageName()} localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
@@ -45,7 +45,7 @@ node {
             sh "docker push localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
             sh "docker push localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
 
-            sh 'docker logout http://localhost:18500/'
+            sh 'docker logout https://localhost:18500/'
         }
     }
 }
