@@ -10,7 +10,6 @@
     <modules>
         <module>webapp</module>
         <module>ear</module>
-        <module>wasliberty</module>
     </modules>
 
     <properties>
