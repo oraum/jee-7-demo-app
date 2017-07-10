@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: "jeedemo-deployment"
+spec:
+  strategy:
+    type: Recreate
+  replicas: 2 
+  template:
+    spec:
+      containers:
+      - name: "jeedemo-deployment"
+        image: "localhost:18500/jeedemoliberty"
+        ports:
+        - name: http 
+          containerPort: 9080
+    metadata:
+      labels:
+        app: "jeedemoliberty"
