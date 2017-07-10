@@ -24,6 +24,14 @@ node {
         }
     }
 
+    stage('Sonar') {
+        echo 'Code Analysis ...'
+
+        withMaven(globalMavenSettingsConfig: 'mavenGlobalSettings', maven: 'Maven 3.5.0') {
+            sh 'mvn -B sonar:sonar'
+        }
+    }
+
     stage('Build Docker image') {
         echo 'Building docker image....'
 
