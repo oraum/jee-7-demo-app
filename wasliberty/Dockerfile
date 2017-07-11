@@ -7,3 +7,5 @@ COPY jee7demo-ear-1.0-SNAPSHOT.ear /opt/ibm/wlp/usr/servers/defaultServer/dropin
 #COPY jee7demo.ear /opt/ibm/wlp/usr/servers/defaultServer/dropins/
 
 ENV LICENCE accept
+
+EXPOSE 9080
