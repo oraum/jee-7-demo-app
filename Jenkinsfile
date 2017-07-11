@@ -5,7 +5,7 @@ node {
     stage('Checkout') {
 
         echo 'Checking out ...'
-        git branch: 'wasline', url: 'http://gitlab/root/jee7demo.git'
+        git branch: 'wasline', url: 'http://gitlab/root/jee-7-demo-app.git'
     }
 
     stage('Build') {
