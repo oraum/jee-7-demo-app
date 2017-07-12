@@ -50,8 +50,8 @@ node {
             sh "docker tag ${image.imageName()} localhost:18500/${image.imageName()}:latest"
 
             // Actually pushing the images
-            sh "docker push localhost:18500/${image.imageName()}:latest"
-            sh "docker push localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
+            // sh "docker push localhost:18500/${image.imageName()}:latest"
+            // sh "docker push localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
 
             sh 'docker logout https://localhost:18500/'
         }
@@ -67,8 +67,8 @@ node {
             sh "docker tag ${image.imageName()} $env.USER/${image.imageName()}:latest"
 
             // Actually pushing the images
-            sh "docker push $env.USER/${image.imageName()}:latest"
-            sh "docker push $env.USER/${image.imageName()}:1.0-SNAPSHOT"
+            // sh "docker push $env.USER/${image.imageName()}:latest"
+            // sh "docker push $env.USER/${image.imageName()}:1.0-SNAPSHOT"
 
             sh 'docker logout'
         }
