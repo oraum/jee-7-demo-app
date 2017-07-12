@@ -39,7 +39,7 @@ node {
     }
 
     stage('Push Docker image') {
-        echo 'Pushing docker image....'
+        echo 'Pushing docker image to private registry ....'
 
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
             // Workaround - see issue https://issues.jenkins-ci.org/browse/JENKINS-38018
@@ -54,6 +54,23 @@ node {
             sh "docker push localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
 
             sh 'docker logout https://localhost:18500/'
+        }
+
+        echo 'Pushing docker image to Docker Hub ....'
+
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
+            // Workaround - see issue https://issues.jenkins-ci.org/browse/JENKINS-38018
+            sh "docker login -u $env.USER -p $env.PASSWORD"
+
+            // Tagging images
+            sh "docker tag ${image.imageName()} $env.USER/${image.imageName()}:1.0-SNAPSHOT"
+            sh "docker tag ${image.imageName()} $env.USER/${image.imageName()}:latest"
+
+            // Actually pushing the images
+            sh "docker push $env.USER/${image.imageName()}:latest"
+            sh "docker push $env.USER/${image.imageName()}:1.0-SNAPSHOT"
+
+            sh 'docker logout'
         }
     }
 
