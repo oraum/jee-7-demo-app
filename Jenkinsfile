@@ -46,6 +46,11 @@ node {
             sh "docker login -u $env.USER -p $env.PASSWORD https://localhost:18500/"
 
             // Tagging images
+
+            // for local docker default registry
+            sh "docker tag ${image.imageName()} localhost:5000/${image.imageName()}:1.0-SNAPSHOT"
+            sh "docker tag ${image.imageName()} localhost:5000/${image.imageName()}:latest"
+
             sh "docker tag ${image.imageName()} localhost:18500/${image.imageName()}:1.0-SNAPSHOT"
             sh "docker tag ${image.imageName()} localhost:18500/${image.imageName()}:latest"
 
@@ -58,20 +63,21 @@ node {
 
         echo 'Pushing docker image to Docker Hub ....'
 
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
-            // Workaround - see issue https://issues.jenkins-ci.org/browse/JENKINS-38018
-            sh "docker login -u $env.USER -p $env.PASSWORD"
+//        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
+//            // Workaround - see issue https://issues.jenkins-ci.org/browse/JENKINS-38018
+//            sh "docker login -u $env.USER -p $env.PASSWORD"
+//
+//            // Tagging images
+//            sh "docker tag ${image.imageName()} $env.USER/${image.imageName()}:1.0-SNAPSHOT"
+//            sh "docker tag ${image.imageName()} $env.USER/${image.imageName()}:latest"
+//
+//            // Actually pushing the images
+//            // sh "docker push $env.USER/${image.imageName()}:latest"
+//            // sh "docker push $env.USER/${image.imageName()}:1.0-SNAPSHOT"
+//
+//            sh 'docker logout'
+//        }
 
-            // Tagging images
-            sh "docker tag ${image.imageName()} $env.USER/${image.imageName()}:1.0-SNAPSHOT"
-            sh "docker tag ${image.imageName()} $env.USER/${image.imageName()}:latest"
-
-            // Actually pushing the images
-            // sh "docker push $env.USER/${image.imageName()}:latest"
-            // sh "docker push $env.USER/${image.imageName()}:1.0-SNAPSHOT"
-
-            sh 'docker logout'
-        }
     }
 
     stage('Deploy') {

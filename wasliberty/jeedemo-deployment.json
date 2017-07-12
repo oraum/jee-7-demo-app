@@ -26,7 +26,7 @@
       "spec": {
         "containers": [
           {
-            "image": "localhost:5000/jee7demo:1.1",
+            "image": "localhost:5000/jee7demo:1.0-SNAPSHOT",
             "name": "jee7demo",
             "ports": [
               {
