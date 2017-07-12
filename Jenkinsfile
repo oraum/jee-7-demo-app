@@ -83,7 +83,7 @@ node {
     }
 
     stage('To k8s') {
-        curl http://localhost:8080/apis/extensions/v1beta1/namespaces/default/deployments \
-            -X POST -H'Content-Type: application/json' -d @jeedemo-deployment.json
+        sh 'curl http://localhost:8080/apis/extensions/v1beta1/namespaces/default/deployments \
+                -X POST -H'Content-Type: application/json' -d @jeedemo-deployment.json'
     }
 }
