@@ -1,0 +1,42 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "labels": {
+      "name": "jee7demo-label",
+      "version": "v1.0.0"
+    },
+    "name": "jee7demo"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "name": "jee7demo-label",
+        "version": "v1.0.0"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "name": "jee7demo-label",
+          "version": "v1.0.0"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "image": "localhost:5000/jee7demo:1.1",
+            "name": "jee7demo",
+            "ports": [
+              {
+                "name": "http",
+                "containerPort": 9080
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

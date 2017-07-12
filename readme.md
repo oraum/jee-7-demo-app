@@ -19,3 +19,13 @@ The *Jenkinsfile* describes a Build pipeline which consists of the stages:
 6. Push the image to a private (Nexus) Docker Registry and to Docker Hub. The credentials for accessing Docker Hub
 have to be set up in Jenkins, the id has to set to 'dockerhub' (or the Jenkinsfile modified accordingly)
 7. Deploy the Maven artifacts. This requires a Maven Repository Proxy to be set up, with appropriate credentials in Jenkins
+
+
+
+## Deploy to Kubernetes
+
+´´´
+curl http://localhost:8080/apis/extensions/v1beta1/namespaces/default/deployments \
+    -X POST -H'Content-Type: application/json' -d @jeedemo-deployment.json
+´´´
+

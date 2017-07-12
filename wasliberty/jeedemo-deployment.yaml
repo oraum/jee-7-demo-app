@@ -5,15 +5,15 @@ metadata:
 spec:
   strategy:
     type: Recreate
-  replicas: 2 
+  replicas: 1
   template:
     spec:
       containers:
       - name: "jeedemo-deployment"
-        image: "localhost:18500/jeedemoliberty"
+        image: "localhost:5000/jee7demo:1.1"
         ports:
         - name: http 
           containerPort: 9080
     metadata:
       labels:
-        app: "jeedemoliberty"
+        app: "jee7demo"
