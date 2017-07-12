@@ -33,7 +33,7 @@ The prefix should be replaced and set to the name of the user that is configured
 
 ### Kubernetes deployment a la curl and json
 
-´´´
+```
 curl http://<your-k8s-master>/apis/extensions/v1beta1/namespaces/default/deployments \
     -X POST -H'Content-Type: application/json' -d @jeedemo-deployment.json
-´´´
+```
